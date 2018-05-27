@@ -11,5 +11,15 @@ module.exports = {
                 connection.release();
             })
         })
+    },
+    registerUser: function(user, callback){
+        pool.getConnection(function(err, connection){
+            if(err) throw err;
+            connection.query(sql.user.add, [user.username, user.password, user.email], function (err, result) {
+                if(err) throw err;
+                callback(result);
+                connection.release();
+            })
+        })
     }
 }
