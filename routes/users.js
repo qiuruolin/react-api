@@ -14,6 +14,12 @@ router.post('/validateUser', function(req, res, next) {
       }
       res.json(response);
     }
+    else{
+      var response = {
+        code: 0
+      }
+      res.json(response);
+    }
   })
 });
 
@@ -24,6 +30,12 @@ router.post('/registerUser', function(req, res, next){
         var response = {
           code: 200,
           uid: result.insertId
+        }
+        res.json(response);
+      }
+      else{
+        var response = {
+          code: 0
         }
         res.json(response);
       }
